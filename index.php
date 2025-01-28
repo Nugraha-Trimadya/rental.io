@@ -1,235 +1,264 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocMoto</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #000000; 
-        }
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>RentGo - Vehicle Rental Dashboard</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+      <style>
+          body {
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              margin: 0;
+              padding: 0;
+              background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
+              min-height: 100vh;
+              color: #fff;
+          }
+          .sidebar {
+              position: fixed;
+              top: 0;
+              left: 0;
+              height: 100vh;
+              width: 250px;
+              background-color: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(10px);
+              padding: 20px;
+              z-index: 1000;
+          }
+          .sidebar-logo {
+              text-align: center;
+          }
+          .sidebar-logo img {
+              width: 100px;
+          }
+          .nav-link {
+              color: #fff;
+              padding: 12px 20px;
+              border-radius: 8px;
+              margin-bottom: 10px;
+              transition: 0.3s;
+          }
+          .nav-link:hover {
+              background-color: rgba(255, 255, 255, 0.1);
+              color: #039b4e;
+          }
+          .nav-link.active {
+              background-color: #039b4e;
+              color: #fff;
+          }
+          .nav-link i {
+              margin-right: 10px;
+          }
+          .main-content {
+              margin-left: 250px;
+              padding: 20px;
+          }
+          .navbar {
+              background-color: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(10px);
+              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          .card {
+              background-color: rgba(255, 255, 255, 0.1);
+              backdrop-filter: blur(10px);
+              border: none;
+              border-radius: 15px;
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+              margin-bottom: 20px;
+              color: #fff;
+          }
+          .feature-icon {
+              font-size: 2.5rem;
+              color: #039b4e;
+              margin-bottom: 15px;
+          }
+      </style>
+  </head>
+  <body>
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            border: 1px solid #000000;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            color: #f8e823;
-        }
+  <div class="container-fluid">
+      <div class="row">
+          <!-- Sidebar -->
+          <div class="sidebar">
+              <div class="sidebar-logo">
+                  <img src="assets/logo.png" alt="RentGo Logo">
+              </div>
+              <nav>
+                  <a href="index.php" class="nav-link active">
+                      <i class="bi bi-house-door"></i> Home
+                  </a>
+                  <a href="booking.php" class="nav-link">
+                      <i class="bi bi-calendar-check"></i> Booking
+                  </a>
+                  <a href="vehicles.php" class="nav-link">
+                      <i class="bi bi-car-front"></i> Vehicles
+                  </a>
+                  <a href="customers.php" class="nav-link">
+                      <i class="bi bi-people"></i> Customers
+                  </a>
+                  <a href="settings.php" class="nav-link">
+                      <i class="bi bi-gear"></i> Settings
+                  </a>
+                  <a href="logout.php" class="nav-link">
+                      <i class="bi bi-box-arrow-right"></i> Logout
+                  </a>
+              </nav>
+          </div>
 
-        .logo {
-            display: block;
-            margin: 0 auto;
-            width: 40px;
-        }
+          <!-- Main Content -->
+          <div class="col-md-10 main-content">
+              <!-- Navbar -->
+              <nav class="navbar navbar-expand-lg mb-4">
+                  <div class="container-fluid">
+                      <form class="d-flex me-auto">
+                          <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                      </form>
+                      <div class="d-flex align-items-center">
+                          <div class="me-3">
+                              <i class="bi bi-bell text-white"></i>
+                          </div>
+                          <div class="me-3">
+                              <i class="bi bi-envelope text-white"></i>
+                          </div>
+                          <div class="dropdown">
+                              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                                  <img src="https://via.placeholder.com/32" class="rounded-circle" alt="profile">
+                              </a>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                                  <li><hr class="dropdown-divider"></li>
+                                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </nav>
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #039b4e;
-        }
+              <!-- Welcome Section -->
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <h2>Selamat Datang di RentGo</h2>
+                      <p class="lead">Platform rental kendaraan terpercaya dengan berbagai pilihan kendaraan berkualitas untuk memenuhi kebutuhan mobilitas Anda.</p>
+                  </div>
+              </div>
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #039b4e3; 
-        }
+              <!-- Features Section -->
+              <div class="row mb-4">
+                  <div class="col-md-4">
+                      <div class="card h-100">
+                          <div class="card-body text-center">
+                              <i class="bi bi-shield-check feature-icon"></i>
+                              <h4>Keamanan Terjamin</h4>
+                              <p>Semua kendaraan kami telah melalui pemeriksaan ketat dan dilengkapi dengan asuransi komprehensif.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card h-100">
+                          <div class="card-body text-center">
+                              <i class="bi bi-clock-history feature-icon"></i>
+                              <h4>Proses Cepat</h4>
+                              <p>Booking dan pengambilan kendaraan dapat dilakukan dalam waktu kurang dari 30 menit.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card h-100">
+                          <div class="card-body text-center">
+                              <i class="bi bi-cash-coin feature-icon"></i>
+                              <h4>Harga Kompetitif</h4>
+                              <p>Kami menawarkan harga terbaik dengan berbagai pilihan paket sesuai kebutuhan Anda.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-        input{
-            width:calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            font-size: 16px;
-            color: #ffffff;
-            background-color: #f8e823;
-        }
+              <!-- Stats Section -->
+              <div class="row">
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <h5>Total Vehicles</h5>
+                              <h2>24</h2>
+                              <p class="mb-0">Available: 15</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <h5>Active Rentals</h5>
+                              <h2>8</h2>
+                              <p class="mb-0">Today: 3</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <h5>Pending Returns</h5>
+                              <h2>5</h2>
+                              <p class="mb-0">Overdue: 1</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="card">
+                          <div class="card-body">
+                              <h5>Total Revenue</h5>
+                              <h2>$2,450</h2>
+                              <p class="mb-0">This Month</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
 
-        select{
-            width:  calc(100% - 0px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            font-size: 16px;
-            color: #ffffff;
-            background-color: #f8e823;
-        }
+              <!-- Recent Bookings Table -->
+              <div class="card mt-4">
+                  <div class="card-body">
+                      <h5 class="card-title">Recent Bookings</h5>
+                      <table class="table table-dark table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Booking ID</th>
+                                  <th>Customer</th>
+                                  <th>Vehicle</th>
+                                  <th>Date</th>
+                                  <th>Status</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>#BK001</td>
+                                  <td>John Doe</td>
+                                  <td>Honda CBR 250RR</td>
+                                  <td>2023-10-15</td>
+                                  <td><span class="badge bg-success">Active</span></td>
+                                  <td>
+                                      <button class="btn btn-sm btn-primary">View</button>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>#BK002</td>
+                                  <td>Jane Smith</td>
+                                  <td>Toyota Avanza</td>
+                                  <td>2023-10-14</td>
+                                  <td><span class="badge bg-warning">Pending</span></td>
+                                  <td>
+                                      <button class="btn btn-sm btn-primary">View</button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 
-        input:focus, select:focus {
-            border-color: solid transparent;
-            outline: none;
-        }
-
-        button {
-            background-color: #f8e823;
-            color: #ffffff; 
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px;
-            width: 100%;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #f6d13a;
-        }
-
-        @media print{
-            .cetak{
-                display: none;
-            visibility: visible;
-            }
-            .buktiTransaksi{
-                display: none;
-            }
-            form{
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-    <img src="logo3.png" alt="" class="logo">
-        <h1>LocMoto</h1>
-        <form action="" method="POST">
-            <div class="isiNama">
-                <label for="namaPelanggan">Nama Pelanggan</label>
-                <input type="text" id="namaPelanggan" name="namaPelanggan" required>
-            </div>
-            <div class="isiWaktu">
-                <label for="lamaWaktuRental">Lama Waktu Rental (Per Hari)</label>
-                <input type="number" id="lamaWaktuRental" name="lamaWaktuRental" required>
-            </div>
-            <div class="isiJenis">
-                <label for="jenisMotor">Jenis Motor</label>
-                <select id="jenisMotor" name="jenisMotor" required>
-                    <option value="Beat">Beat</option>
-                    <option value="Supra">Supra</option>
-                    <option value="Vario">Vario</option>
-                    <option value="Harley">Harley</option>
-                </select>
-            </div>
-            <button type="submit" name="Submit">Submit</button>
-        </form>
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                class Rental
-                {
-                    public $nama;
-                    public $harga;
-                    public $diskon = 5;
-                    public $waktu;
-                    public $jenis;
-                    public $ppn = 10;
-
-                    public function __construct($nama, $harga, $waktu, $jenis) {
-                        $this->nama = $nama;
-                        $this->harga = $harga;
-                        $this->waktu = $waktu;
-                        $this->jenis = $jenis;
-                    }
-
-                    public function getNama() {
-                        return $this->nama;
-                    }
-
-                    public function getHarga() {
-                        return $this->harga;
-                    }
-
-                    public function getWaktu() {
-                        return $this->waktu;
-                    }
-
-                    public function getJenis() {
-                        return $this->jenis;
-                    }
-
-                    public function getDiskon() {
-                        return $this->diskon;
-                    }
-
-                    public function Member() {
-                        return $this->nama;
-                    }
-                }
-
-                class Pelanggan extends Rental {
-                    public function ppn() {
-                        $harga = $this->harga * $this->waktu;
-                        $totalHarga = $harga + $harga * $this->ppn / 100;
-                        return $totalHarga;
-                    }
-
-                    public function buktiTransaksi($isMember) {
-                        $totalHarga = $this->ppn();
-                        $hargaFinal = $isMember ? $totalHarga - ($totalHarga * $this->diskon / 100) : $totalHarga;
-
-                        echo "
-                        <center><div>
-                        <h3>Anda merupakan {$this->nama} disini dan Anda mendapat diskon sebesar " . ($isMember ? "5%" : "0%") . "</h3>
-                        <p>Jenis motor yang Anda sewa adalah {$this->jenis} selama {$this->waktu} hari</p>
-                        <p>Harga permotornya adalah Rp." . number_format($this->harga, 2, ',', '.') . "</p>
-                        <h3>Anda harus membayar sebesar Rp." . number_format($hargaFinal, 2, ',', '.') . "</h3>
-                        <button onclick='buktiTransaksi()' class='cetak'>Cetak</button>
-                        </div></center>";
-                    }
-                }
-
-                $nama = strtolower($_POST["namaPelanggan"]);
-                $waktu = $_POST["lamaWaktuRental"];
-                $jenis = strtolower($_POST["jenisMotor"]);
-
-                $namaPelanggan = ["agus", "wawan", "yusuf", "sukma", "taufik"]; 
-
-                function isPelanggan($nama, $namaPelanggan) {
-                    return in_array($nama, $namaPelanggan);
-                }
-
-                if (isset($_POST['Submit'])) {
-                    if (isset($_POST['namaPelanggan'], $_POST['lamaWaktuRental'], $_POST['jenisMotor'])) {
-                        $pelangganInput = strtolower($_POST['namaPelanggan']);
-                        $waktu = $_POST['lamaWaktuRental'];
-                        $jenis = strtolower($_POST['jenisMotor']);
-                        $hargaMotor = [
-                            "vario" => 70000,
-                            "beat" => 60000,
-                            "supra" => 250000,
-                            "harley" => 500000,
-                        ];
-
-                        $isMember = isPelanggan($pelangganInput, $namaPelanggan);
-
-                        if (array_key_exists($jenis, $hargaMotor)) {
-                            $harga = $hargaMotor[$jenis];
-                            $rental = new Pelanggan($isMember ? "member" : "non member", $harga, $waktu, $jenis);
-                            $rental->buktiTransaksi($isMember);
-                        }
-                    }
-                }
-            }
-
-
-            ?>
-            <script>
-                function buktiTransaksi() {
-                    window.print();
-                }
-            </script>
-        </div>
-    
-</body>
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>
